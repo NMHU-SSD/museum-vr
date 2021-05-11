@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Museum VR</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="interact.js"></script>
+    <script src="button.js"></script>
+
+</head>
+<body>
+    <a-scene camera look-controls mouse-cursor wasd-controls raycaster="objects: [button];" cursor="rayOrigin: mouse">
+        <a-camera>
+            <a-entity cursor position="0 0 -1"
+                      geometry="primitive: sphere; radius: 0.005"
+                      material="color: #A022C0; shader: flat; opacity:0.8"></a-entity>
+        </a-camera>
+        <a-assets>
+            <img id="artwork1" crossOrigin="anonymous" src="artwork/Artwork1.jpg">
+            <img id="artwork2" crossOrigin="anonymous" src="artwork/Artwork2.jpg">
+            <img id="artwork3" crossOrigin="anonymous" src="artwork/Artwork3.jpg">
+            <a-assset-item id="museumModel" src="models/Museum.glb" position="-2 0 -7"></a-assset-item>
+        </a-assets>
+        <a-entity id="leftHand" toggle-layer laser-controls="hand: left" raycaster="objects: [button]"></a-entity>
+        <a-entity id="rightHand" toggle-layer laser-controls="hand: right" raycaster="objects: [button]"></a-entity>
+        <a-entity gltf-model="#museumModel" ></a-entity>
+        <a-sky color="#87CEEB"></a-sky>
+
+        <a-box id="artContainer" color="#FFFFFF" position="-3 1.5 -1" src="#artwork1" scale="1 1.4 .01"></a-box>
+        <a-entity page-turn="direction: forward" id="nextButton" button="label: Next" position="-2.5 1 -.9"></a-entity>
+        <a-entity page-turn="direction: backward" id="previousButton" button="label: Previous" position="-3.5 1 -.9"></a-entity>
+    </a-scene>
+</body>
+</html>
