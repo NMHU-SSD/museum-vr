@@ -1,2 +1,2 @@
-# museum-vr
-Practicum Project
+# Practicum Project
+VR Museum with A-frame
